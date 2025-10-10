@@ -1,5 +1,5 @@
 {
-  "name": "grammar-checker-library",
+  "name": "grammar-checker-libs",
   "version": "0.1.0",
   "description": "A React component library for grammar checking and rectification",
   "main": "dist/index.js",
@@ -19,7 +19,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Ajay7616/grammar-checker-libs"
+    "url": "https://github.com/Ajay7616/grammar-checker-library"
   },
   "peerDependencies": {
     "react": "^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0",
