@@ -1,6 +1,6 @@
 {
   "name": "grammar-checker-libs",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A React component library for grammar checking and rectification",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
