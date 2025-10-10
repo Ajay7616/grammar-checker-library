@@ -1,4 +1,4 @@
-# Grammar Checker Library
+# Grammar Checker Libs
 
 A React component library for grammar checking and rectification with real-time suggestions and corrections.
 
@@ -13,13 +13,13 @@ A React component library for grammar checking and rectification with real-time 
 ## Installation
 
 ```bash
-npm install grammar-checker-library
+npm install grammar-checker-libs
 ```
 
 or
 
 ```bash
-yarn add grammar-checker-library
+yarn add grammar-checker-libs
 ```
 
 ## Quick Start
@@ -27,7 +27,7 @@ yarn add grammar-checker-library
 ### 1. Install the Library
 
 ```bash
-npm install grammar-checker-library
+npm install grammar-checker-libs
 ```
 
 ### 2. Setup Backend Server
@@ -57,7 +57,7 @@ python app.py
 
 ```javascript
 import React from 'react';
-import { GrammarRectifier } from 'grammar-checker-library';
+import { GrammarRectifier } from 'grammar-checker-libs';
 
 function App() {
   return (
@@ -76,7 +76,7 @@ export default App;
 ### Basic Usage with Textarea
 
 ```javascript
-import { GrammarRectifier } from 'grammar-checker-library';
+import { GrammarRectifier } from 'grammar-checker-libs';
 
 function MyComponent() {
   return (
@@ -90,7 +90,7 @@ function MyComponent() {
 ### With Input Field
 
 ```javascript
-import { GrammarRectifier } from 'grammar-checker-library';
+import { GrammarRectifier } from 'grammar-checker-libs';
 
 function MyComponent() {
   return (
@@ -104,8 +104,8 @@ function MyComponent() {
 ### Using API Utilities
 
 ```javascript
-import { GrammarRectifier } from 'grammar-checker-library';
-import * as api from 'grammar-checker-library';
+import { GrammarRectifier } from 'grammar-checker-libs';
+import * as api from 'grammar-checker-libs';
 
 async function checkGrammar(text) {
   try {
@@ -216,7 +216,7 @@ Checks the provided text for grammar errors.
 
 **Example:**
 ```javascript
-import { checkGrammar } from 'grammar-checker-library';
+import { checkGrammar } from 'grammar-checker-libs';
 
 const result = await checkGrammar("This are wrong.");
 ```
@@ -328,7 +328,7 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 ## Support
 
 For issues and questions:
-- GitHub Issues: [[Issues](https://github.com/Ajay7616/issues)]
+- GitHub Issues: [[Issues](https://github.com/Ajay7616/grammar-checker-librar/issues)]
 - Email: [[Email](u.ajaykumar7616@gmail.com)]
 
 ## Acknowledgments
