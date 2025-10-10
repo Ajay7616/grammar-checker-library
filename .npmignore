@@ -1,0 +1,43 @@
+# Source files
+src/
+public/
+
+# Development files
+example/
+.env
+.env.local
+.env.development
+.env.test
+.env.production
+
+# Build tools config
+rollup.config.js
+babel.config.js
+.babelrc
+webpack.config.js
+
+# Testing
+coverage/
+*.test.js
+*.spec.js
+__tests__/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Dependencies
+node_modules/
+
+# Misc
+.DS_Store
+.git/
+.gitignore
+README.md

@@ -1,70 +1,342 @@
-# Getting Started with Create React App
+# Grammar Checker Library
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A React component library for grammar checking and rectification with real-time suggestions and corrections.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+- Real-time grammar checking
+- Intelligent error detection and suggestions
+- Fast and reliable grammar corrections
+- Free and open-source
+- Easy integration with existing React applications
 
-### `npm start`
+## Installation
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+```bash
+npm install grammar-checker-library
+```
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+or
 
-### `npm test`
+```bash
+yarn add grammar-checker-library
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Quick Start
 
-### `npm run build`
+### 1. Install the Library
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```bash
+npm install grammar-checker-library
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### 2. Setup Backend Server
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+This library requires a backend server to process grammar checks. Download and setup the server:
 
-### `npm run eject`
+**Clone the backend repository:**
+```bash
+git clone https://github.com/Ajay7616/grammar-check-backend.git
+cd grammar-check-backend
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+**Start the Java LanguageTool Server (Port 8081):**
+```bash
+java -cp "LanguageTool-6.3/languagetool-server.jar" org.languagetool.server.HTTPServer --port 8081
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+**Start the Python Server:**
+```bash
+pip install -r requirements.txt
+python app.py
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+> Note: Run the Java server first, then the Python server. Both must be running for the grammar checker to work.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### 3. Use in Your React App
 
-## Learn More
+```javascript
+import React from 'react';
+import { GrammarRectifier } from 'grammar-checker-library';
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+function App() {
+  return (
+    <div className="App">
+      <h1>Grammar Checker</h1>
+      <GrammarRectifier />
+    </div>
+  );
+}
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+export default App;
+```
 
-### Code Splitting
+## Usage Examples
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### Basic Usage with Textarea
 
-### Analyzing the Bundle Size
+```javascript
+import { GrammarRectifier } from 'grammar-checker-library';
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+function MyComponent() {
+  return (
+    <GrammarRectifier>
+      <textarea placeholder="Type something with mistakes..." />
+    </GrammarRectifier>
+  );
+}
+```
 
-### Making a Progressive Web App
+### With Input Field
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+```javascript
+import { GrammarRectifier } from 'grammar-checker-library';
 
-### Advanced Configuration
+function MyComponent() {
+  return (
+    <GrammarRectifier>
+      <input type="text" placeholder="Try typing 'teh' or 'definately'" />
+    </GrammarRectifier>
+  );
+}
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+### Using API Utilities
 
-### Deployment
+```javascript
+import { GrammarRectifier } from 'grammar-checker-library';
+import * as api from 'grammar-checker-library';
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+async function checkGrammar(text) {
+  try {
+    const result = await api.checkGrammar(text);
+    console.log(result);
+  } catch (error) {
+    console.error('Grammar check failed:', error);
+  }
+}
+```
 
-### `npm run build` fails to minify
+### For Create React App (Webpack 5) Users
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+If you're using Create React App and encounter module resolution errors with `http`, `https`, `stream`, etc., you need to configure webpack polyfills:
+
+**1. Install required packages:**
+```bash
+npm install --save-dev react-app-rewired node-polyfill-webpack-plugin stream-http https-browserify url assert stream-browserify util browserify-zlib
+```
+
+**2. Create `config-overrides.js` in your project root:**
+```javascript
+const NodePolyfillPlugin = require('node-polyfill-webpack-plugin');
+
+module.exports = function override(config) {
+  config.resolve.fallback = {
+    ...config.resolve.fallback,
+    http: require.resolve('stream-http'),
+    https: require.resolve('https-browserify'),
+    url: require.resolve('url'),
+    assert: require.resolve('assert'),
+    stream: require.resolve('stream-browserify'),
+    util: require.resolve('util'),
+    zlib: require.resolve('browserify-zlib'),
+  };
+  
+  config.plugins.push(new NodePolyfillPlugin());
+  
+  return config;
+};
+```
+
+**3. Update your `package.json` scripts:**
+```json
+{
+  "scripts": {
+    "start": "react-app-rewired start",
+    "build": "react-app-rewired build",
+    "test": "react-app-rewired test"
+  }
+}
+```
+
+**Note:** This is only required for Create React App with Webpack 5. Modern tools like Vite, Next.js, or newer React frameworks handle this automatically.
+
+## API Documentation
+
+### Components
+
+#### `<GrammarRectifier />`
+
+The main component for grammar checking and correction.
+
+**Important:** This component only works with `<input type="text">` and `<textarea>` elements wrapped inside it.
+
+**Supported Usage:**
+
+```javascript
+<GrammarRectifier>
+  <input type="text" />
+</GrammarRectifier>
+
+<GrammarRectifier>
+  <textarea />
+</GrammarRectifier>
+```
+
+**Props:**
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `placeholder` | string | `"Enter text..."` | Placeholder text for input |
+| `initialText` | string | `""` | Initial text to display |
+| `apiEndpoint` | string | `"http://localhost:5555"` | Backend API endpoint |
+
+**Example:**
+```javascript
+<GrammarRectifier 
+  placeholder="Type your text here..."
+  initialText="Hello world"
+  apiEndpoint="http://localhost:5555"
+/>
+```
+
+### Utility Functions
+
+Functions exported from `utils/api.js`:
+
+#### `checkGrammar(text)`
+
+Checks the provided text for grammar errors.
+
+**Parameters:**
+- `text` (string): The text to check
+
+**Returns:**
+- Promise with grammar check results
+
+**Example:**
+```javascript
+import { checkGrammar } from 'grammar-checker-library';
+
+const result = await checkGrammar("This are wrong.");
+```
+
+## Backend Setup Details
+
+### Prerequisites
+
+- **Java**: JDK 8 or higher
+- **Python**: Python 3.7 or higher
+- **LanguageTool**: Version 6.3
+
+### Backend Repository
+
+Download the backend server files:
+```bash
+git clone https://github.com/Ajay7616/grammar-check-backend.git
+```
+
+### Running the Servers
+
+1. **Start Java LanguageTool Server:**
+   ```bash
+   cd grammar-check-backend
+   java -cp "LanguageTool-6.3/languagetool-server.jar" org.languagetool.server.HTTPServer --port 8081
+   ```
+   
+   Wait for the message: `Server started on http://localhost:8081`
+
+2. **Start Python Server:**
+   ```bash
+   pip install -r requirements.txt
+   python app.py
+   ```
+   
+   The server will start on `http://localhost:5555`
+
+### Verifying Setup
+
+Test if servers are running:
+```bash
+# Test Java server
+curl http://localhost:8081/v2/check -d "language=en-US&text=This are wrong"
+
+# Test Python server
+curl -X POST http://127.0.0.1:5555/api/check -H "Content-Type: application/json" -d "{\"text\":\"i recieve many emails every day, but the most important ones are definetly from my colleagues.\"}"
+```
+
+## Why This Approach?
+
+This library uses a **free, reliable, and fast** approach by leveraging:
+
+- **LanguageTool**: Industry-standard open-source grammar checker
+- **Local Processing**: No external API calls, complete privacy
+- **High Performance**: Fast response times with local servers
+- **No Cost**: Completely free to use
+- **Reliable**: No rate limits or API restrictions
+
+## Development
+
+### Build the Library
+
+```bash
+npm run build
+```
+
+### Run Tests
+
+```bash
+npm test
+```
+
+## Requirements
+
+- React 16.8+ (with Hooks support)
+- Node.js 14+
+- Backend servers (Java + Python)
+
+## Troubleshooting
+
+### "Cannot connect to server"
+
+Make sure both Java and Python servers are running:
+```bash
+# Check if Java server is running (Port 8081)
+curl http://localhost:8081
+
+# Check if Python server is running (Port 5555)
+curl http://localhost:5555
+```
+
+Note: Java server runs on port 8081 and Python server runs on port 5555. If you need to use different ports, update the API endpoint in your component configuration.
+
+### Java Server Not Starting
+
+Ensure you have Java installed:
+```bash
+java -version
+```
+
+## License
+
+MIT
+
+## Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+## Support
+
+For issues and questions:
+- GitHub Issues: [[Issues](https://github.com/Ajay7616/issues)]
+- Email: [[Email](u.ajaykumar7616@gmail.com)]
+
+## Acknowledgments
+
+- [LanguageTool](https://languagetool.org/) - Open-source grammar checker
+- [language-tool-python](https://github.com/jxmorris12/language-tool-python) by Jack Morris - Backend support
+- React community
+
+---
+
+Made with love for better writing

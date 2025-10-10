@@ -1,0 +1,174 @@
+.grammar-checker {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.header h2 {
+  margin: 0;
+  color: #333;
+}
+
+.loading-indicator {
+  color: #2196F3;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.input-container {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.textarea-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.text-input {
+  width: 100%;
+  min-height: 200px;
+  padding: 12px;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  font-size: 16px;
+  line-height: 1.5;
+  font-family: inherit;
+  resize: vertical;
+  background: white;
+  color: #333;
+  box-sizing: border-box;
+  z-index: 1;
+  position: relative;
+}
+
+.text-input:focus {
+  outline: none;
+  border-color: #2196F3;
+}
+
+.highlight-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  font-size: 16px;
+  line-height: 1.5;
+  font-family: inherit;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  overflow: hidden;
+  color: transparent;
+  z-index: 2;
+  padding: 12px;
+  margin: 0;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  box-sizing: border-box;
+}
+
+.grammar-error {
+  background: transparent;
+  cursor: pointer;
+  text-decoration: underline;
+  text-decoration-color: #ff0000;
+  text-decoration-style: wavy;
+  text-underline-offset: 2px;
+  border-radius: 2px;
+  transition: background-color 0.2s ease;
+  color: #333;
+  pointer-events: auto;
+  position: relative;
+}
+
+.grammar-error:hover {
+  background-color: rgba(255, 0, 0, 0.1);
+}
+
+.suggestion-tooltip {
+  position: fixed;
+  background: #333;
+  color: white;
+  padding: 12px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  z-index: 1000;
+  max-width: 280px;
+  font-size: 14px;
+  pointer-events: auto;
+}
+
+.suggestion-tooltip::before {
+  content: '';
+  position: absolute;
+  top: -6px;
+  left: 20px;
+  border: 6px solid transparent;
+  border-bottom-color: #333;
+}
+
+.tooltip-message {
+  margin-bottom: 10px;
+  font-size: 13px;
+  color: #e0e0e0;
+}
+
+.suggestions {
+  margin-top: 8px;
+}
+
+.suggestions strong {
+  display: block;
+  margin-bottom: 6px;
+  color: #fff;
+}
+
+.suggestion-btn {
+  background: #2196F3;
+  color: white;
+  border: none;
+  padding: 6px 10px;
+  margin: 2px 6px 2px 0;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 12px;
+  transition: background-color 0.2s ease;
+}
+
+.suggestion-btn:hover {
+  background: #1976D2;
+  transform: translateY(-1px);
+}
+
+.suggestion-btn:active {
+  transform: translateY(0);
+}
+
+.error-summary {
+  padding: 12px;
+  background-color: #fff3cd;
+  border: 1px solid #ffeaa7;
+  border-radius: 6px;
+  color: #856404;
+  margin-bottom: 10px;
+  font-weight: 500;
+}
+
+.no-errors {
+  padding: 12px;
+  background-color: #d4edda;
+  border: 1px solid #c3e6cb;
+  border-radius: 6px;
+  color: #155724;
+  font-weight: 500;
+}
