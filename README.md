@@ -53,24 +53,6 @@ python app.py
 
 > Note: Run the Java server first, then the Python server. Both must be running for the grammar checker to work.
 
-### 3. Use in Your React App
-
-```javascript
-import React from 'react';
-import { GrammarRectifier } from 'grammar-checker-libs';
-
-function App() {
-  return (
-    <div className="App">
-      <h1>Grammar Checker</h1>
-      <GrammarRectifier />
-    </div>
-  );
-}
-
-export default App;
-```
-
 ## Usage Examples
 
 ### Basic Usage with Textarea
