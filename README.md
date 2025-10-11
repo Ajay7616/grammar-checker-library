@@ -13,13 +13,13 @@ A React component library for grammar checking and rectification with real-time 
 ## Installation
 
 ```bash
-npm install grammar-checker-libs
+npm install grammar-checker-libs axios
 ```
 
 or
 
 ```bash
-yarn add grammar-checker-libs
+yarn add grammar-checker-libs axios
 ```
 
 ## Quick Start
@@ -27,7 +27,7 @@ yarn add grammar-checker-libs
 ### 1. Install the Library
 
 ```bash
-npm install grammar-checker-libs
+npm install grammar-checker-libs axios
 ```
 
 ### 2. Setup Backend Server
@@ -163,23 +163,6 @@ The main component for grammar checking and correction.
 <GrammarRectifier>
   <textarea />
 </GrammarRectifier>
-```
-
-**Props:**
-
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `placeholder` | string | `"Enter text..."` | Placeholder text for input |
-| `initialText` | string | `""` | Initial text to display |
-| `apiEndpoint` | string | `"http://localhost:5555"` | Backend API endpoint |
-
-**Example:**
-```javascript
-<GrammarRectifier 
-  placeholder="Type your text here..."
-  initialText="Hello world"
-  apiEndpoint="http://localhost:5555"
-/>
 ```
 
 ### Utility Functions
