@@ -27,7 +27,11 @@ yarn add grammar-checker-libs axios
 ### 1. Install the Library
 
 ```bash
+#for npm
 npm install grammar-checker-libs axios
+
+#for yarn
+yarn add grammar-checker-libs axios
 ```
 
 ### 2. Setup Backend Server
@@ -192,7 +196,7 @@ const result = await checkGrammar("This are wrong.");
 
 - **Java**: JDK 8 or higher
 - **Python**: Python 3.7 or higher
-- **LanguageTool**: Version 6.3
+- **Package Manager**: Node.js 14+ / Yarn 1.22.x
 
 ### Backend Repository
 
@@ -253,12 +257,6 @@ npm run build
 ```bash
 npm test
 ```
-
-## Requirements
-
-- React 16.8+ (with Hooks support)
-- Node.js 14+
-- Backend servers (Java + Python)
 
 ## Troubleshooting
 
