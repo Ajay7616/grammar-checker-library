@@ -13,13 +13,13 @@ A React component library for grammar checking and rectification with real-time 
 ## Installation
 
 ```bash
-npm install grammar-checker-libs axios
+npm install grammar-checker-libs
 ```
 
 or
 
 ```bash
-yarn add grammar-checker-libs axios
+yarn add grammar-checker-libs
 ```
 
 ## Quick Start
@@ -28,10 +28,10 @@ yarn add grammar-checker-libs axios
 
 ```bash
 #for npm
-npm install grammar-checker-libs axios
+npm install grammar-checker-libs
 
 #for yarn
-yarn add grammar-checker-libs axios
+yarn add grammar-checker-libs
 ```
 
 ### 2. Setup Backend Server
